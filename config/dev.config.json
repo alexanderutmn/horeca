@@ -1,0 +1,23 @@
+{
+  "salt": "salt",
+  "cookieSecret": "cooksec",
+  "app": {
+    "port": "443",
+    "host": "0.0.0.0"
+  },
+  "telegramBot":{
+    "port": "8080",
+    "host": "0.0.0.0"
+  },
+  "db": {
+    "client": "mongodb",
+    "connection": {
+      "host": "localhost",
+      "port": "27017",
+      "dbName": "app"
+    }
+  },
+  "hash": {
+    "encryptionType": "sha256"
+  }
+}
