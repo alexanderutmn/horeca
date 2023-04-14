@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="d-flex mb-3 align-items-center">
+    <div class="mr-auto d-none d-lg-block">
+      <h2 class="text-black font-w600 mb-0">Клиенты</h2>
+      <p class="mb-0">Ваш список клиентов</p>
+    </div>
+    <div class="col-12 col-md-3" style="text-align: center;">
+      <a href="javascript:void(0);" id="download" onclick="var popout = window.open('/admin/users/get-csv');window.setTimeout(function(){popout.close();}, 1000);" class="btn btn-success btn-lg">Выгрузить клиентов</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table id="users-table" class="display mb-4 dataTablesCard">
+          <thead>
+            <tr>
+              <th>Имя</th>
+              <th>Телефон</th>
+              <th>Улица</th>
+              <th>Дом</th>
+              <th>Квартира</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each users}}
+            <tr>
+              <td>{{name}}</td>
+              <td>{{username}}</td>
+              <td>{{street}}</td>
+              <td>{{house}}</td>
+              <td>{{flat}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

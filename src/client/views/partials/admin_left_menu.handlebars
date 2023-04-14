@@ -1,0 +1,86 @@
+<div class="deznav">
+  <div class="deznav-scroll">
+    <ul class="metismenu" id="menu">
+      <li>
+        <a
+          class="has-arrow ai-icon"
+          href="javascript:void()"
+          aria-expanded="false"
+        >
+          <i class="flaticon-381-app"></i>
+          <span class="nav-text">Меню</span>
+        </a>
+        <ul aria-expanded="false">
+          <li><a href="/admin/menu/">Блюда</a></li>
+          <li><a href="/admin/categories/">Категории</a></li>
+          <li><a href="/admin/modifiers/">Модификаторы</a></li>
+          <li><a href="/admin/modifiers-categories/">Групповые модификаторы</a></li>
+        </ul>
+      </li>
+      <li><a href="/admin/orders/" class="ai-icon" aria-expanded="false">
+          <i class="flaticon-381-notepad"></i>
+          <span class="nav-text">Заказы</span>
+        </a>
+      </li>
+      <li><a href="/admin/sales" class="ai-icon" aria-expanded="false">
+          <i class="flaticon-381-warning-1"></i>
+          <span class="nav-text">Акции</span>
+        </a>
+      </li>
+      <li><a href="/admin/booking" class="ai-icon" aria-expanded="false">
+          <i class="flaticon-381-calendar-5"></i>
+          <span class="nav-text">Бронирование</span>
+        </a>
+      </li>
+      <li><a href="/admin/users/" class="ai-icon" aria-expanded="false">
+          <i class="flaticon-381-user-4"></i>
+          <span class="nav-text">Клиенты</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="has-arrow ai-icon"
+          href="javascript:void()"
+          aria-expanded="false"
+        >
+          <i class="flaticon-381-settings-2"></i>
+          <span class="nav-text">Настройки</span>
+        </a>
+        <ul aria-expanded="false">
+          <li><a href="/admin/settings/">Настройки</a></li>
+          {{#if setting.isIntegrationWithIiko}}
+            <li><a href="/admin/importmenu-from-iiko/">Синхронизация с iiko</a></li>
+          {{/if}}
+          {{#if setting.OPTIONS.[5]}}
+            <li><a href="/admin/payment/">Оплата</a></li>
+          {{/if}}
+          <li><a href="/admin/tips/">Чаевые</a></li>
+          <li><a href="/admin/qr-code/">Генерация QR</a></li>
+          <li><a href="/admin/personalizatsiya/">Изменение цветов</a></li>
+          <li><a href="/admin/telegram/">Телеграм Бот</a></li>
+          <li><a href="/admin/terms/">Пользоватльеское соглашение</a></li>
+        </ul>
+      </li>
+      <li><a
+          href="https://easyqr.ru/blog/"
+          class="ai-icon"
+          aria-expanded="false"
+          target="_blank"
+        >
+          <i class="flaticon-381-help-1"></i>
+          <span class="nav-text">Инструкция</span>
+        </a>
+      </li>
+      <li><a href="/admin/logout/" class="ai-icon" aria-expanded="false">
+          <i class="flaticon-381-exit"></i>
+          <span class="nav-text">Выйти</span>
+        </a>
+      </li>
+      <li><a href="/" class="ai-icon" aria-expanded="false">
+          <i class="flaticon-381-repeat"></i>
+          <span class="nav-text">Вернуться в меню</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

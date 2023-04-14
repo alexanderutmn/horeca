@@ -1,0 +1,89 @@
+<div class="person-page">
+  {{#if personInfo.data.name}}
+    <div class="flex-row">
+      <div class="person-page__title">
+        Имя
+      </div>
+      <div class="person-page__value">
+        {{personInfo.data.name}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if personInfo.data.phone}}
+    <div class="flex-row">
+      <div class="person-page__title">
+        Номер телефона
+      </div>
+      <div class="person-page__value">
+        {{personInfo.data.phone}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if personInfo.data.street}}
+    <div class="flex-row">
+      <div class="person-page__title">
+        Улица
+      </div>
+      <div class="person-page__value">
+        {{personInfo.data.street}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if personInfo.data.house}}
+    <div class="flex-row">
+      <div class="person-page__title">
+        Дом
+      </div>
+      <div class="person-page__value">
+        {{personInfo.data.house}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if personInfo.data.flat}}
+    <div class="flex-row">
+      <div class="person-page__title">
+        Квартира
+      </div>
+      <div class="person-page__value">
+        {{personInfo.data.flat}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="" style="margin: 10px auto;max-width: 250px;display: flex;justify-content: space-between;">
+    <a href="/person-update{{#if numberTable}}?numberTable={{numberTable}}{{/if}}" class="btn main-color-button">Изменить</a>
+    <a href="/person-logout{{#if numberTable}}?numberTable={{numberTable}}{{/if}}" class="btn main-color-button">Выйти</a>
+  </div>
+  <h2 style="text-align: center;margin-top: 40px;">Список заказов</h2>
+  <div class="orders-block" style="padding: 0;">
+    {{#each orders}}
+    <div class="order">
+      <div class="order__top">
+        <div class="order__title">
+          Заказ №{{incoming_order_id}}
+        </div>
+        <div class="order__price">
+          {{orderPrice}} {{currency}}
+        </div>
+      </div>
+      <div class="order__middle text-light">
+        <div class="order__status">
+          Статус – {{orderStatus}}
+        </div>
+        <div class="order__date">
+          {{place}}
+        </div>
+      </div>
+      <div class="order__bottom">
+        <a href="javascript:void(0);" class="detail-order-person button-inverse " data-id="{{incoming_order_id}}">
+          Детали заказа
+        </a>
+      </div>
+    </div>
+    {{else}}
+      <div class="alert alert-danger" style="margin-top: 15px;">У вас пока нет заказов</div>
+    {{/each}}
+  </div>
+</div>
+
+{{> main_order_detail }}

@@ -1,0 +1,40 @@
+<div class="container-fluid">
+   <div class="row page-titles mx-0">
+      <div class="col-sm-6 p-md-0">
+         <div class="welcome-text">
+            <h4>{{title}}</h4>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-xl-12 col-lg-12">
+         <div class="card">
+            <div class="card-body">
+               <div class="alert alert-info alert-dismissible fade show">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                  </button>
+                  <div class="media">
+                     <div class="media-body">
+                        <h5 class="mt-1 mb-1">Как это работает?</h5>
+                        <p class="mb-0">Инструкция по добавлению и использованию телеграм бота находится в нашем блоге по ссылке <a href="https://easyqr.ru/blog/telegram-i-easy-qr/" target="_blank">Easy QR и Телеграм</a></p>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               {{#if telegramBotName}}
+                  <h4>Никнейм бота: {{telegramBotName}}</h4>
+                  <h4>Пароль администратора: {{adminCode}}</h4>
+                  <h4>Пароль официанта: {{waiterCode}}</h4>
+               {{else}}
+               <div class="alert alert-outline-warning alert-dismissible fade show">
+                                 <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                                 </button>
+                                 <strong>Ошибка!</strong> Ваш Бот еще не создан, попробуйте позже.
+                             </div>
+               {{/if}}
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

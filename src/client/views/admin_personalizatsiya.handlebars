@@ -1,0 +1,324 @@
+<!-- row -->
+<div class="container-fluid">
+   <div class="row page-titles mx-0">
+      <div class="col-sm-6 p-md-0">
+         <div class="welcome-text">
+            <h4>{{title}}</h4>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-xl-12 col-lg-12">
+         <div class="card">
+            <div class="card-body">
+               <div class="basic-form">
+                  <form method="post" enctype="multipart/form-data">
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Логотип</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-9"></i> <br>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="hidden" name="USE_LOADER_IMG" value="{{colors.USE_LOADER_IMG}}" id="load-img-old-field">
+                           {{#if colors.USE_LOADER_IMG}}
+                            <div class="" id="load-img-load">
+                              <img src="/assets/css/loader.jpeg" alt="" class="mb-3" style="max-width: 160px;">
+                              <a href="javascript: void(0);" id="load-img-delete" style="margin-left: 10px;color: red; font-size: 16px;"><i class="fa fa-close"></i></a>
+                            </div>
+                           {{/if}}
+                            <div class="custom-file">
+                               <input type="file" accept="image/png, image/jpeg" class="custom-file-input" name="LOAD_IMG" id="load-img-field">
+                               <label class="custom-file-label" id="load-img-label">Выбрать изображение</label>
+                               <a href="javascript: void(0);" id="load-img-delete-clone" style="display: none;margin-left: 10px;color: red;font-size: 20px;position: absolute;right: 104px;z-index: 14;padding: 5px 10px;top: 0px;cursor: pointer;"><i class="fa fa-close"></i></a>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Текст</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-1"></i><br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#05202E" data-target="MAIN_TEXT_COLOR">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.MAIN_TEXT_COLOR}}" id="MAIN_TEXT_COLOR" name="MAIN_TEXT_COLOR">
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Текст в кнопках</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-3"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#ffffff" data-target="BUTTON_TEXT_COLOR">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.BUTTON_TEXT_COLOR}}" id="BUTTON_TEXT_COLOR" name="BUTTON_TEXT_COLOR">
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Фон кнопок</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-4"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#091c3b" data-target="BUTTON_COLOR">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.BUTTON_COLOR}}" id="BUTTON_COLOR" name="BUTTON_COLOR">
+                        </div>
+                     </div>
+
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Вес блюда</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-6"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#829096" data-target="TEXT_LIGHT">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.TEXT_LIGHT}}" id="TEXT_LIGHT" name="TEXT_LIGHT">
+                        </div>
+                     </div>
+
+                     <hr>
+
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Фон меню</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-10"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#ffffff" data-target="BACKGROUND_COLOR">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.BACKGROUND_COLOR}}" id="BACKGROUND_COLOR" name="BACKGROUND_COLOR">
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Фоновое изображение</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-11"></i> <br>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="hidden" name="USE_BACKGROUND_IMG" value="{{colors.USE_BACKGROUND_IMG}}" id="background-img-old-field">
+                           {{#if colors.USE_BACKGROUND_IMG}}
+                            <div class="" id="background-img-load">
+                              <img src="/assets/css/background-body.webp" alt="" class="mb-3" style="max-width: 160px;">
+                              <a href="javascript: void(0);" id="background-img-delete" style="margin-left: 10px;color: red; font-size: 16px;"><i class="fa fa-close"></i></a>
+                            </div>
+                           {{/if}}
+                            <div class="custom-file">
+                               <input type="file" accept="image/png, image/jpeg" class="custom-file-input" name="BACKGROUND_IMAGE" id="background-img-field">
+                               <label class="custom-file-label" id="background-img-label">Выбрать изображение</label>
+                               <a href="javascript: void(0);" id="background-img-delete-clone" style="display: none;margin-left: 10px;color: red;font-size: 20px;position: absolute;right: 104px;z-index: 14;padding: 5px 10px;top: 0px;cursor: pointer;"><i class="fa fa-close"></i></a>
+                            </div>
+                        </div>
+                     </div>
+
+                     <hr>
+
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Вспомогательные элементы</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-2"></i><br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#091c3b" data-target="MAIN_COLOR">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.MAIN_COLOR}}" id="MAIN_COLOR" name="MAIN_COLOR">
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Вспомогательный фон</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-5"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#F0F7FA" data-target="LOGHT">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.LOGHT}}" id="LOGHT" name="LOGHT">
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Вспомогательные линии</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-7"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#DFE8EF" data-target="STROKE">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.STROKE}}" id="STROKE" name="STROKE">
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Фон "Заказ создан"</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-8"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#091c3b" data-target="ORDER_MADE_BLOCK">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.ORDER_MADE_BLOCK}}" id="ORDER_MADE_BLOCK" name="ORDER_MADE_BLOCK">
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Фон всплывающего окна</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-12"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#ffffff" data-target="POPUP_BACKUP">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.POPUP_BACKUP}}" id="POPUP_BACKUP" name="POPUP_BACKUP">
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Текст в поле ввода</label> <i class="flaticon-381-help-1" data-toggle="modal" data-target=".color-example-13"></i> <br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#05202e" data-target="POPUP_INPUT_COLOR">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.POPUP_INPUT_COLOR}}" id="POPUP_INPUT_COLOR" name="POPUP_INPUT_COLOR">
+                        </div>
+                     </div>
+                     <!-- <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                           <label class="">Цвет рамок всплывающего окна</label><br>
+                           <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#dfe8ef" data-target="POPUP_BORDER">Стандартное значение</a>
+                        </div>
+                        <div class="col-sm-6">
+                           <input type="color" style="max-width: 60px;" class="form-control" value="{{colors.POPUP_BORDER}}" id="POPUP_BORDER" name="POPUP_BORDER">
+                        </div>
+                     </div> -->
+
+                     <div class="form-group row">
+                        <div class="col-sm-10">
+                           <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- Small modal -->
+<div class="modal fade bd-example-modal-sm color-example-1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/1.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-sm color-example-2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/2.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-3" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/3.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-4" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/4.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-5" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/5.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-6" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/6.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-7" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/7.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-8" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/8.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-9" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/9.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-10" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/10.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-11" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/11.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-12" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/12.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-13" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/13.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm color-example-14" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+        <div class="modal-body"><img src="/assets_admin/images/colors-example/14.png" alt="" style="width: 100%;height: auto; display: block;"></div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger light" data-dismiss="modal">Закрыть</button>
+        </div>
+     </div>
+  </div>
+</div>

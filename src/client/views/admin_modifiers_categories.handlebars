@@ -1,0 +1,110 @@
+<!-- row -->
+<div class="container-fluid">
+  <div class="d-flex mb-3 align-items-center">
+    <div class="mr-auto d-none d-lg-block">
+      <h2 class="text-black font-w600 mb-0">Групповые модификаторы</h2>
+      <p class="mb-0">Ваш список групповых модификаторов</p>
+    </div>
+    <div class="col-6 col-md-3">
+      <select
+        class="single-select-placeholder js-states parent-category"
+        placeholder="Выбрать категорию"
+        id="modifiers-category-parent-category"
+      >
+        <option value="#">Выбрать родителя</option>
+        {{#each categories}}
+          <option value="{{_id}}">{{title}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-6 col-md-2">
+      <a
+        href="/admin/modifiers-categories/add/"
+        class="btn btn-success btn-lg"
+      >Добавить</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table
+          id="categories-table-modifiers"
+          class="display mb-4 dataTablesCard"
+          data-lengthDataTableModifiersCategories={{lengthDataTableModifiersCategories}}
+          data-productModifiersCategoriesByCategory={{productModifiersCategoriesByCategory}}
+        >
+          <thead>
+            <tr>
+              <th>Название</th>
+              <th>Активность</th>
+              <th>Родительская категория</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each items}}
+              <tr>
+                <td data-id="{{_id}}">
+                  <a
+                    href="/admin/modifiers-categories/{{_id}}/"
+                  >{{title}}</a></td>
+                <td data-id="{{_id}}">
+                  {{#if active}}
+                    Да
+                  {{else}}
+                    Нет
+                  {{/if}}
+                </td>
+                <td data-id="{{_id}}" class="">{{parent_id.title}}</td>
+                <td>
+                  <div class="dropdown ml-auto text-right">
+                    <div class="btn-link" data-toggle="dropdown">
+                      <svg
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        version="1.1"
+                      >
+                        <g
+                          stroke="none"
+                          stroke-width="1"
+                          fill="none"
+                          fill-rule="evenodd"
+                        >
+                          <rect x="0" y="0" width="24" height="24"></rect>
+                          <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                          <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                          <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      {{#if active}}
+                        <a
+                          class="dropdown-item deactive-category-modifiers"
+                          data-id="{{_id}}"
+                          href="javascript:void(0);"
+                        >Деактивировать</a>
+                      {{else}}
+                        <a
+                          class="dropdown-item active-category-modifiers"
+                          data-id="{{_id}}"
+                          href="javascript:void(0);"
+                        >Активировать</a>
+                      {{/if}}
+                      <a
+                        class="dropdown-item remove-category-modifiers"
+                        data-id="{{_id}}"
+                        href="javascript:void(0);"
+                      >Удалить</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<!-- row -->
+<div class="container-fluid">
+  <div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+      <div class="welcome-text">
+        <h4>{{title}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="alert alert-info alert-dismissible fade show">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+             </button>
+             <div class="media">
+                <div class="media-body">
+                   <h5 class="mt-1 mb-1">Как это работает?</h5>
+                   <p class="mb-0">Инструкция по настройке онлайн оплаты находится в нашем блоге по ссылке <a href="https://easyqr.ru/blog/payment/" target="_blank">Настройка онлайн оплаты</a></p>
+                </div>
+             </div>
+          </div>
+          <br>
+          <div class="basic-form">
+            <form method="post">
+              <div class="form-group row align-items-center">
+                <label class="col-sm-3 col-form-label">Public ID</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="paymentPublicID"
+                    class="form-control"
+                    value="{{setting.paymentPublicID}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row align-items-center">
+                <label class="col-sm-3 col-form-label">Включить онлайн оплату</label>
+                <div class="col-sm-9">
+                  {{#if setting.enablePayment}}
+                    <input
+                      type="checkbox"
+                      name="enablePayment"
+                      value="true"
+                      checked
+                    />
+                 {{else}}
+                   <input
+                     type="checkbox"
+                     name="enablePayment"
+                     value="true"
+                   />
+                 {{/if}}
+                </div>
+              </div>
+              <div class="form-group row align-items-center">
+                <label class="col-form-label col-sm-3 pt-0">Одностадийная онлайн оплата или двухстадийная?</label>
+                  <div class="col-sm-9">
+                    <div class="form-group mb-0">
+                      <div class="radio">
+                        <label><input type="radio" name="singleMessagePayment" value="true" {{#if setting.singleMessagePayment}} checked {{/if}}> Однастадийная онлайн оплата</label>
+                      </div>
+                      <div class="radio">
+                        <label><input type="radio" name="singleMessagePayment" value="false" {{#unless setting.singleMessagePayment}} checked {{/unless}}> Двухстадийная онлайн оплата</label>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

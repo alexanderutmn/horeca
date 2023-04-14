@@ -1,0 +1,87 @@
+<!-- row -->
+<div class="container-fluid">
+   <div class="row page-titles mx-0">
+      <div class="col-sm-6 p-md-0">
+         <div class="welcome-text">
+            <h4>{{item.title}}</h4>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-xl-12 col-lg-12">
+         <div class="card">
+            <div class="card-body">
+               <div class="basic-form">
+                  <form method="post" enctype="multipart/form-data">
+                     <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Название акции</label>
+                        <div class="col-sm-9">
+
+                           <input class="form-control" type="text" name="title" minLength=2 required>
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Описание акции</label>
+                        <div class="col-sm-9">
+
+                           <textarea class="form-control" rows="4" name="description" minLength=2 required></textarea>
+                        </div>
+                     </div>
+
+                        <div class="form-group row">
+                           <label class="col-sm-3 col-form-label">Изображение акции</label>
+                           <div class="col-sm-9">
+                             <input type="hidden" name="image" value="{{item.image}}" id="product-img-old-field">
+                             {{#if item.image}}
+                              <div class="" id="product-img-load">
+                                <img src="{{item.image}}" alt="" class="mb-3" style="max-width: 160px;">
+                                <a href="javascript: void(0);" id="product-img-delete" style="margin-left: 10px;color: red; font-size: 16px;"><i class="fa fa-close"></i></a>
+                              </div>
+                             {{/if}}
+                              <div class="custom-file">
+                                 <input type="file" accept="image/png, image/jpeg, image/webp" class="custom-file-input" name="new_img" id="product-img-field" required>
+                                 <label class="custom-file-label" id="product-img-label">Выбрать изображение</label>
+                                 <a href="javascript: void(0);" id="product-img-delete-clone" style="display: none;margin-left: 10px;color: red;font-size: 20px;position: absolute;right: 104px;z-index: 14;padding: 5px 10px;top: 0px;cursor: pointer;"><i class="fa fa-close"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                        <fieldset class="form-group">
+                           <div class="row">
+                              <label class="col-form-label col-sm-3 pt-0">Состояние акции</label>
+                              <div class="col-sm-9">
+                                 <div class="form-group mb-0">
+                                    <div class="radio">
+                                       <label><input type="radio" name="action" required value="true"  {{#if true}} checked {{/if}}> активно</label>
+                                    </div>
+                                    <div class="radio disabled">
+                                       <label><input type="radio" name="action" required  value="false" {{#if false}} checked {{/if}}> не активно</label>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </fieldset>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Дата начала акции</label>
+                            <div class="col-sm-9">
+                                <input class="datepicker-default form-control" type="text" name="dateStartSales" value="{{{today}}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Дата конца акции</label>
+                            <div class="col-sm-9">
+                                <input class="datepicker-default form-control" type="text" name="dateFinishSales" value="{{{today}}}">
+                            </div>
+                        </div>
+
+                     <div class="form-group row">
+                        <div class="col-sm-10">
+                           <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

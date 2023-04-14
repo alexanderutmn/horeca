@@ -1,0 +1,64 @@
+<!-- row -->
+<div class="container-fluid">
+   {{#if url}}
+   <div class="row">
+      <div class="col-12">
+         <div class="card">
+            <div class="card-header">
+               <h4 class="card-title">QR код</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-8">
+                  <div class="row">
+                    <div class="col-12 col-sm-4">
+                      <h4 class="mb-2">Наименование стола:</h4>
+                    </div>
+                    <div class="col-12 col-sm-2 mb-2">
+                              <input type="text" class="input-title-name-table form-control" value={{titleTable}}>
+                           </div>
+
+                    <div class="col-12 col-sm-4">
+                      <div class="btn btn-primary mb-2 change-title-name-table">Изменить</div>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                      <h4 class="mb-2">Ваша ссылка: <a href="{{url}}" target="_blank">{{url}}</a></h4>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <a href="javascript:void(0);" data-url="{{url}}" class="btn btn-primary mb-2 create-qr">Создать QR</a>
+                    </div>
+                    {{#each tables}}
+                      <div class="col-12 col-sm-6">
+                        <h4 class="mb-2">{{title}} № {{number}}</h4>
+                      </div>
+                      <div class="col-12 col-sm-4">
+                        <a href="javascript:void(0);" data-url="{{../url}}/?numberTable={{hash}}" class="btn btn-primary mb-2 create-qr">Создать QR</a>
+                      </div>
+                    {{/each}}
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="row">
+                    <div class="col-12 col-sm-4">
+                      <div id="qrcode"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   {{else}}
+   <div class="alert alert-secondary solid alert-dismissible fade show">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
+      <div class="media">
+         <div class="media-body">
+            <h3 class="mt-1 mb-2 text-white">Раздел находится в разработке</h3>
+            <p class="mb-0">Раздел находится в разработке, а пока, вы можете сгенерировать QR-коды в старой версии Личного Кабинета по следующей ссылке <a href="https://easyqr.ru/personal/generatsiya-qr/" target="_blank">https://easyqr.ru/personal/generatsiya-qr/</a> <br>Для входа используйте ваш Логин и Пароль <br> В случае возникновения проблем обращайтесь на почту поддержки <a href="mailto:support@easyqr.ru">support@easyqr.ru</a>  </p>
+         </div>
+      </div>
+   </div>
+   {{/if}}
+</div>

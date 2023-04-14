@@ -1,0 +1,54 @@
+<!-- row -->
+<div class="container-fluid">
+  <div class="d-flex mb-3 align-items-center">
+    <div class="mr-auto d-none d-lg-block">
+      <h2 class="text-black font-w600 mb-0">Акции</h2>
+      <p class="mb-0">Ваш список акций</p>
+    </div>
+    <div class="col-6 col-md-3">
+      <p>Статус</p>
+      <select class="single-select-placeholder js-states sales-status">
+        <option value="100">Все</option>
+        <option value="1">Активные</option>
+        <option value="0">Не активные</option>
+      </select>
+    </div>
+    <div class="col-6 col-md-2">
+      <a href="/admin/sales/add/" class="btn btn-success btn-lg">Добавить</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table id="sales-table" class="display mb-4 dataTablesCard">
+          <thead>
+            <tr>
+              <th>Название</th>
+              <th>Дата начала акции</th>
+              <th>Дата окончания акции</th>
+              <th>Статус</th>
+              <th>Описание акции</th>
+              <th>Изображение акции</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sales}}
+            <tr>
+              <td><a href="/admin/sales/{{_id}}/">{{title}}</a></td>
+              <td>{{dateStartSales}}</td>
+              <td>{{dateFinishSales}}</td>
+              {{#if action}}
+              <td><span class="btn btn-sm light btn-success fs-16">Активный</span></td>
+              {{else}}
+              <td><span class="btn btn-sm light btn-danger fs-16">Не активный</span></td>
+              {{/if}}
+              <td>{{description}}</td>
+              <td><img src={{image}} style="width: 100px; height: 100px; object-fit:contain;"></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

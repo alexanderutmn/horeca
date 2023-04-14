@@ -1,0 +1,42 @@
+<!-- row -->
+<div class="container-fluid">
+  <div class="d-flex mb-3 align-items-center">
+    <div class="mr-auto d-none d-lg-block">
+      <h2 class="text-black font-w600 mb-0">Бронирование</h2>
+      <p class="mb-0">Ваш список брони</p>
+    </div>
+
+    <div class="ml-3 col-6 col-md-3">
+      <p>Дата</p>
+      <input class="form-control input-daterange-datepicker booking" type="text" name="daterange" value="{{{today}}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table id="sales-table" class="display mb-4 dataTablesCard">
+          <thead>
+            <tr>
+              <th>Имя</th>
+              <th>Телефон</th>
+              <th>Дата брони</th>
+              <th>Кол-во гостей</th>
+              <th>Комментарий</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each booking}}
+            <tr>
+              <td>{{name}}</td>
+              <td>{{phone}}</td>
+              <td>{{datetime}}</td>
+              <td>{{count}}</td>
+              <td>{{comment}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<!-- row -->
+<div class="container-fluid">
+   <div class="row page-titles mx-0">
+      <div class="col-sm-6 p-md-0">
+         <div class="welcome-text">
+            <h4>{{item.title}}</h4>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-xl-12 col-lg-12">
+         <div class="card">
+            <div class="card-body">
+               <div class="basic-form">
+                  <form method="post">
+                     <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Имя пользователя</label>
+                        <div class="col-sm-9">
+                           <input class="form-control" type="text" name="userName" minLength=2 required>
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Введите пароль</label>
+                        <div class="col-sm-9">
+                           <input class="form-control" type="password" name="userPassword" minLength=2 required>
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Подтвердите пароль</label>
+                        <div class="col-sm-9">
+                           <input class="form-control" type="password" name="truePassword" minLength=2 required>
+                        </div>
+                     </div>
+                     <!-- <fieldset class="form-group">
+                        <div class="row">
+                           <label class="col-form-label col-sm-3 pt-0">Состояние пользователя</label>
+                           <div class="col-sm-9">
+                              <div class="form-group mb-0">
+                                 <div class="radio">
+                                    <label><input type="radio" name="action" required value="true"  {{#if true}} checked {{/if}}> активно</label>
+                                 </div>
+                                 <div class="radio disabled">
+                                    <label><input type="radio" name="action" required  value="false" {{#if false}} checked {{/if}}> не активно</label>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </fieldset> -->
+
+                     <div class="form-group row">
+                        <div class="col-sm-10">
+                           <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

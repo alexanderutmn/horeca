@@ -1,0 +1,49 @@
+<div class="booking">
+  {{#if message.error}}
+    <div class="alert alert-danger" style="margin-top: 15px;">{{message.text}}</div>
+  {{/if}}
+  {{#if message.success}}
+    <div class="alert alert-success" style="margin-top: 15px;">{{message.text}}</div>
+  {{/if}}
+  <form class="" action="" method="post">
+    <div class="theme-input-title">
+      Имя
+    </div>
+    <div class="booking__input">
+      <input type="text" name="name" placeholder="Введите имя" class="theme-input" required>
+    </div>
+    <div class="theme-input-title">
+      Номер телефона
+    </div>
+    <div class="booking__input">
+      <input type="text" name="phone" required placeholder="+7(___) ___-____" class="theme-input" required id="booking-phone">
+    </div>
+    <div class="theme-input-title">
+      Количество гостей
+    </div>
+    <div class="booking__input">
+      <input type="number" name="count" placeholder="Введите количество гостей" class="theme-input" required>
+    </div>
+    <div class="theme-input-title">
+      Дата
+    </div>
+    <div class="booking__input">
+      <input type="date" name="datetime" placeholder="Выберите дату" class="theme-input" required>
+    </div>
+    <div class="theme-input-title">
+      Время
+    </div>
+    <div class="booking__input">
+      <input type="time" name="datetime" placeholder="Выберите время" class="theme-input" step="1800" required>
+    </div>
+    <div class="theme-input-title">
+      Комментарий
+    </div>
+    <div class="booking__input">
+      <textarea name="comment" rows="4" cols="80" class="theme-input" placeholder="Введите комментарий"></textarea>
+    </div>
+    <div class="" style="margin: 10px 0;">
+      <input type="submit" name="" value="Забронировать" class="btn main-color-button" style="border: none; cursor: pointer;">
+    </div>
+  </form>
+</div>

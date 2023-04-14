@@ -1,0 +1,17 @@
+{{#if showBottomCart}}
+  <div class="bottom-line">
+    <a href="{{ linkCart }}" class="bottom-line__cart btn main-color-button">
+      <span class="bottom-line__cart-title">
+        {{#if wantOrder}}
+          Хочу заказать
+        {{else}}
+          Корзина
+        {{/if}}
+      </span>
+      <span class="bottom-line__cart-sum">
+        <span id="bottom-line__cart-sum" class="price-val" data-value="{{cartSum}}">{{cartSum}}</span>
+        {{currentCurrency}}
+      </span>
+    </a>
+  </div>
+{{/if}}

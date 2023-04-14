@@ -1,0 +1,132 @@
+<div class="products-block">
+  <div class="products">
+
+    {{#if items}}
+      {{#each items}}
+        <div class="product-container">
+          <div class="product {{#if countInCart }} in-cart {{/if}} {{#unless ../showProductsControl}} height-min {{/unless}}"
+                data-id="{{id}}"
+                data-title="{{title}}"
+                data-price="{{price}}"
+                data-weight="{{weight}}"
+                data-id-category="{{id_category}}"
+                data-unit="{{unit}}"
+                data-img="{{img}}"
+                data-description="{{description}}"
+                data-currentCurrency="{{currentCurrency}}"
+            >
+            <div class="product__top">
+              <div class="product__image" style="background-image: url({{img}})">
+                <!-- <img src="{{img}}" alt="" style="width: 100%; height: auto;"> -->
+                <div class="in-cart__count">
+                  {{countInCart}}
+                </div>
+              </div>
+              <div class="product__title">
+                {{shortTitle}}
+              </div>
+              <div class="product__units text-light">
+                {{#if ../showWeight}}
+                  {{weight}} {{unit}}
+                {{/if}}
+              </div>
+            </div>
+            {{#if ../showProductsControl}}
+              <div class="product__price-block loght">
+                <div class="product__minus main-color-svg">
+                  <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.923077 0.0769043H5.07692H6.92308H11.0769C11.5867 0.0769043 12 0.49018 12 0.999981C12 1.50978 11.5867 1.92306 11.0769 1.92306H6.92308H5.07692H0.923077C0.413276 1.92306 0 1.50978 0 0.999981C0 0.49018 0.413276 0.0769043 0.923077 0.0769043Z" fill="white"/>
+                  </svg>
+                </div>
+                <div class="product__price">
+                  <span class="product__price-value price-val">
+                    {{price}}
+                  </span>
+                  {{@root.currentCurrency}}
+                </div>
+                <div class="product__plus main-color-svg">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.92308 5.07692V0.923077C6.92308 0.413276 6.5098 0 6 0C5.4902 0 5.07692 0.413276 5.07692 0.923077V5.07692H0.923077C0.413276 5.07692 0 5.4902 0 6C0 6.5098 0.413276 6.92308 0.923077 6.92308H5.07692V11.0769C5.07692 11.5867 5.4902 12 6 12C6.5098 12 6.92308 11.5867 6.92308 11.0769V6.92308H11.0769C11.5867 6.92308 12 6.5098 12 6C12 5.4902 11.5867 5.07692 11.0769 5.07692H6.92308Z" fill="white"/>
+                  </svg>
+                </div>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="alert alert-danger">Нет элементов</div>
+    {{/if}}
+
+  </div>
+</div>
+
+<div id="product-popup__background" class="product-popup__background"></div>
+<div id="product-popup" class="product-popup">
+  <div class="product-popup__body background-color">
+    <div class="product-popup__img" style="">
+      <a href="javascript:void(0);" class="product-popup__close main-color-button">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.5167 1.48335C10.3617 1.32714 10.1774 1.20315 9.97431 1.11854C9.77122 1.03392 9.55337 0.990356 9.33335 0.990356C9.11333 0.990356 8.89549 1.03392 8.69239 1.11854C8.48929 1.20315 8.30496 1.32714 8.15002 1.48335L6.00002 3.65002L3.85002 1.48335C3.53618 1.16951 3.11052 0.993202 2.66669 0.993202C2.22285 0.993202 1.79719 1.16951 1.48335 1.48335C1.16951 1.79719 0.993202 2.22285 0.993202 2.66669C0.993202 3.11052 1.16951 3.53618 1.48335 3.85002L3.65002 6.00002L1.48335 8.15002C1.32714 8.30496 1.20315 8.48929 1.11854 8.69239C1.03392 8.89549 0.990356 9.11333 0.990356 9.33335C0.990356 9.55337 1.03392 9.77122 1.11854 9.97432C1.20315 10.1774 1.32714 10.3617 1.48335 10.5167C1.63829 10.6729 1.82263 10.7969 2.02573 10.8815C2.22882 10.9661 2.44667 11.0097 2.66669 11.0097C2.88671 11.0097 3.10455 10.9661 3.30765 10.8815C3.51075 10.7969 3.69508 10.6729 3.85002 10.5167L6.00002 8.35002L8.15002 10.5167C8.30496 10.6729 8.48929 10.7969 8.69239 10.8815C8.89549 10.9661 9.11333 11.0097 9.33335 11.0097C9.55337 11.0097 9.77122 10.9661 9.97431 10.8815C10.1774 10.7969 10.3617 10.6729 10.5167 10.5167C10.6729 10.3617 10.7969 10.1774 10.8815 9.97432C10.9661 9.77122 11.0097 9.55337 11.0097 9.33335C11.0097 9.11333 10.9661 8.89549 10.8815 8.69239C10.7969 8.48929 10.6729 8.30496 10.5167 8.15002L8.35002 6.00002L10.5167 3.85002C10.6729 3.69508 10.7969 3.51075 10.8815 3.30765C10.9661 3.10455 11.0097 2.88671 11.0097 2.66669C11.0097 2.44667 10.9661 2.22882 10.8815 2.02573C10.7969 1.82263 10.6729 1.63829 10.5167 1.48335Z" fill="#40BFFF"/>
+        </svg>
+      </a>
+      <img src="" alt="" style="width: 100%; height: auto; display: block;">
+      <div class="product-popup__img-line main-color-svg">
+        <svg width="48" height="5" viewBox="0 0 48 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 2.5C0 1.11929 1.11929 0 2.5 0H45.5C46.8807 0 48 1.11929 48 2.5C48 3.88071 46.8807 5 45.5 5H2.5C1.11929 5 0 3.88071 0 2.5Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+    <div class="product-popup__description">
+      Крем, мука, савоярди, яйца, маскаропне и куча много всего чего другого
+    </div>
+    <div class="product-popup__info {{#unless showProductsControl}} pad-b-30 {{/unless}}">
+      <div class="product-popup__title">
+        <span class="product-popup__title-value">
+          Десерт Тирамису,
+        </span>
+        <span class="product-popup__unit-value">
+          150 г
+        </span>
+      </div>
+      <div class="product-popup__price">
+        <span class="product-popup__price-value">
+          400
+        </span>
+        {{@root.cuurentCurrency}}
+      </div>
+    </div>
+    {{#if showProductsControl}}
+      <div class="product-popup__controls">
+        <div class="product-popup__count">
+          <div class="product-popup__count-minus main-color-svg">
+            <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.923077 0.0769043H5.07692H6.92308H11.0769C11.5867 0.0769043 12 0.49018 12 0.999981C12 1.50978 11.5867 1.92306 11.0769 1.92306H6.92308H5.07692H0.923077C0.413276 1.92306 0 1.50978 0 0.999981C0 0.49018 0.413276 0.0769043 0.923077 0.0769043Z" fill="#40BFFF"/>
+            </svg>
+          </div>
+          <div class="product-popup__count-value">
+            1
+          </div>
+          <div class="product-popup__count-plus main-color-svg">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.92308 5.07692V0.923077C6.92308 0.413276 6.5098 0 6 0C5.4902 0 5.07692 0.413276 5.07692 0.923077V5.07692H0.923077C0.413276 5.07692 0 5.4902 0 6C0 6.5098 0.413276 6.92308 0.923077 6.92308H5.07692V11.0769C5.07692 11.5867 5.4902 12 6 12C6.5098 12 6.92308 11.5867 6.92308 11.0769V6.92308H11.0769C11.5867 6.92308 12 6.5098 12 6C12 5.4902 11.5867 5.07692 11.0769 5.07692H6.92308Z" fill="#40BFFF"/>
+            </svg>
+          </div>
+        </div>
+        <div class="product-popup__add">
+          <a href="javascript:void(0);" class="btn blue-color main-color-button">
+            {{#if wantOrder}}
+              Хочу заказать
+            {{else}}
+              Добавить
+            {{/if}}
+          </a>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+{{> popupName }}
+
+{{> bottomCart }}

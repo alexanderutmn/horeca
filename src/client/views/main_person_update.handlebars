@@ -1,0 +1,41 @@
+<div class="person-page-update">
+  {{#if message.error}}
+    <div class="alert alert-danger" style="margin-top: 15px;">{{message.text}}</div>
+  {{/if}}
+  <form class="" action="" method="post">
+    <div class="theme-input-title">
+      Имя
+    </div>
+    <div class="person-sign__input">
+      <input type="text" name="name" placeholder="Введите имя" class="theme-input" value="{{personInfo.data.name}}">
+    </div>
+    <div class="theme-input-title">
+      Номер телефона
+    </div>
+    <div class="person-sign__input">
+      <input type="text" name="phone" required placeholder="+7(___) ___-____" class="theme-input" id="personPhone" value="{{personInfo.data.phone}}">
+    </div>
+    <div class="theme-input-title">
+      Улица
+    </div>
+    <div class="person-sign__input">
+      <input type="text" name="street" placeholder="Введите название улицы" class="theme-input" value="{{personInfo.data.street}}">
+    </div>
+    <div class="theme-input-title">
+      Дом
+    </div>
+    <div class="person-sign__input">
+      <input type="text" name="house" placeholder="Введите номер дома" class="theme-input" value="{{personInfo.data.house}}">
+    </div>
+    <div class="theme-input-title">
+      Квартира
+    </div>
+    <div class="person-sign__input">
+      <input type="text" name="flat" placeholder="Введите номер квартиры" class="theme-input" value="{{personInfo.data.flat}}">
+    </div>
+    <div class="" style="margin: 10px 0; display: flex;">
+      <a href="/person" class="btn main-color-button">Назад</a>
+      <input type="submit" name="" value="Сохранить" class="btn main-color-button" style="border: none;margin-left: 10px;">
+    </div>
+  </form>
+</div>

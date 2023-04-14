@@ -1,0 +1,53 @@
+{{#if showSales}}
+<div class="events-block">
+  <div>
+    <a href="#" class="events-block__link">
+      <img src="assets/images/aktia.png" alt="" style="margin: 0 auto;">
+    </a>
+  </div>
+  <div>
+    <a href="#" class="events-block__link">
+      <img src="assets/images/aktia.png" alt="" style="margin: 0 auto;">
+    </a>
+  </div>
+  <div>
+    <a href="#" class="events-block__link">
+      <img src="assets/images/aktia.png" alt="" style="margin: 0 auto;">
+    </a>
+  </div>
+  <div>
+    <a href="#" class="events-block__link">
+      <img src="assets/images/aktia.png" alt="" style="margin: 0 auto;">
+    </a>
+  </div>
+</div>
+{{/if}}
+<div class="category-block">
+  <div class="category-block__title">Меню</div>
+  <div class="categories">
+    {{#if items}}
+      {{#each items}}
+        <div class="category-container">
+          <div class="category loght">
+            {{#if img}}
+              <a href="{{../linkItem}}{{id}}" class="category__link" style="background-image: url({{img}})">
+            {{else}}
+              <a href="{{../linkItem}}{{id}}" class="category__link no-photo">
+            {{/if}}
+                <div class="category__name">
+                  {{ title }}
+                </div>
+              </a>
+            </div>
+          </div>
+      {{/each}}
+    {{else}}
+      <div class="alert alert-danger">Нет элементов</div>
+    {{/if}}
+
+  </div>
+</div>
+
+{{> popupName }}
+
+{{> bottomCart }}

@@ -1,0 +1,85 @@
+<!-- row -->
+<div class="container-fluid">
+  <div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+      <div class="welcome-text">
+        <h4>{{title}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          {{#if jsonDataIs}}
+            {{#each jsonDataError}}
+              <p>Не получилось импортировать
+                {{Название}}
+                потому что
+                {{Причина}}</p>
+            {{/each}}
+          {{/if}}
+          <div class="basic-form">
+            {{#unless integrationWithIiko}}
+              <form method="post">
+                {{#if showApiLoginFromIiko}}
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Логин в Iiko
+                      (apiLogin)</label>
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="NameIiko"
+                        value="{{setting.NameIiko}}"
+                        required
+                      />
+                    </div>
+                  </div>
+                {{/if}}
+                {{#if ShowNameRestaurantFromIiko}}
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Название организации
+                      в Iiko (name)</label>
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="NameRestaurant"
+                        value="{{NameRestaurant}}"
+                        required
+                      />
+                    </div>
+                  </div>
+                {{/if}}
+                {{#if ShowNameOrganizations}}
+                  <div class="col-6 col-md-3">
+                    <select
+                      class="single-select-placeholder js-states"
+                      placeholder="Выбрать название организации в Iiko (name)"
+                      name="NameRestaurant"
+                    >
+                      <option value="#">Выбрать название организации в Iiko
+                        (name)</option>
+                      {{#each restaurants}}
+                        <option value="{{name}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                {{/if}}
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                    >Сохранить</button>
+                  </div>
+                </div>
+              </form>
+            {{/unless}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

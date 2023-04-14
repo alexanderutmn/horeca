@@ -1,0 +1,117 @@
+<!-- row -->
+<div class="container-fluid">
+  <div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+      <div class="welcome-text">
+        <h4>{{item.title}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="basic-form">
+            <form method="post">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Название</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="title"
+                    required
+                    value="{{item.title}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Цена</label>
+                <div class="col-sm-9">
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="price"
+                    required
+                    value="{{item.price}}"
+                  />
+                </div>
+              </div>
+              <fieldset class="form-group">
+                 <div class="row">
+                    <label class="col-form-label col-sm-3 pt-0">Единица измерения</label>
+                    <div class="col-sm-9">
+                       <div class="form-group mb-0">
+                          <div class="radio">
+                             <label><input type="radio" name="unit" required value="гр" data-text="Вес" {{#if gr}} checked {{/if}}> гр.</label>
+                          </div>
+                          <div class="radio">
+                             <label><input type="radio" name="unit" required value="мл" data-text="Объем" {{#if ml}} checked {{/if}}> мл.</label>
+                          </div>
+                          <div class="radio disabled">
+                             <label><input type="radio" name="unit" required  value="шт" data-text="Кол-во" {{#if sht}} checked {{/if}}> шт.</label>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </fieldset>
+              <div class="form-group row">
+                 <label class="col-sm-3 col-form-label" id="weight-text">Вес</label>
+                 <div class="col-sm-9">
+                    <input type="text" class="form-control" name="weight" required value="{{item.weight}}">
+                 </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Родительская группа</label>
+                <div class="col-sm-9">
+                  <select
+                    class=""
+                    name="id_category"
+                    id="product_id_category"
+                    data-id="{{item.id_category._id}}"
+                  >
+                    <option value="#">Не выбрана</option>
+                    {{#if item.id_category.title}}
+                      <option
+                        value="{{item.id_category._id}}"
+                        selected
+                      >{{item.id_category.title}}</option>
+                    {{/if}}
+
+                    {{#each categories}}
+                      <option value="{{_id}}">{{title}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Сортировка</label>
+                <div class="col-sm-9">
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="sort"
+                    value="{{item.sort}}"
+                    placeholder="500"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                  >Сохранить</button>
+                  <button
+                    data-id={{item._id}}
+                    class="btn btn-primary remove-modifiers"
+                  >Удалить</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,175 @@
+{{#unless wantOrder}}
+  {{#if isRemoteOrder }}
+    <div class="cart-delivery-block loght">
+      {{#if enableInHall}}
+        <div class="cart-delivery-block__item {{#unless enableInHall}}disable{{/unless}}" data-val="4">
+          В зале
+        </div>
+      {{/if}}
+      <div class="cart-delivery-block__item {{#unless enableDelivery}}disable{{/unless}}" data-val="3">
+        Доставка
+      </div>
+      <div class="cart-delivery-block__item {{#unless enablePickup}}disable{{/unless}}" data-val="2">
+        Самовывоз
+      </div>
+    </div>
+    {{else}}
+    <div class="cart-persons-block">
+      {{#each persons}}
+        <div class="cart-persons-name" data-id="{{id}}">
+          {{personName}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+{{/unless}}
+
+<div class="cart-products">
+
+</div>
+
+<div class="cart-detail">
+  {{#unless wantOrder}}
+    <div class="cart-detail__title">
+      Детали заказа
+    </div>
+
+    <div class="cart-detail__params">
+      {{#if isRemoteOrder}}
+        <div class="cart-detail__subtitle">
+          Введите ваши данные
+        </div>
+        <div class="cart-input">
+          <input type="text" name="name" required placeholder="Введите имя" value="{{authPerson.name}}">
+        </div>
+        <div class="cart-input">
+          <input type="text" name="phone" required placeholder="+7(___) ___-____" value="{{authPerson.phone}}">
+        </div>
+        <div class="params-adress-block">
+          <div class="cart-detail__subtitle">
+            Введите ваш адрес
+          </div>
+          {{#if showCitySelect}}
+            <div class="cart-input">
+              <select class="city" name="city" required>
+                <option value="">Не выбран</option>
+                {{#each cities}}
+                  <option value="{{id}}" delivery-price="{{delivery}}" min-summ-order="{{minSummOrder}}" delivery-free="{{deliveryFree}}">{{title}}</option>
+                {{/each}}
+              </select>
+            </div>
+          {{/if}}
+          <div class="cart-input">
+            <input type="text" name="street" placeholder="Улица" value="{{authPerson.street}}">
+          </div>
+          <div class="cart-input">
+            <input type="text" name="house" placeholder="Дом" value="{{authPerson.house}}">
+          </div>
+          <div class="cart-input">
+            <input type="text" name="flat" placeholder="Квартира" value="{{authPerson.flat}}">
+          </div>
+        </div>
+        <div class="cart-detail__subtitle">
+          К какому времени
+        </div>
+        <div class="cart-input">
+          <input type="time" name="time" class="time-input" placeholder="Время заказа">
+        </div>
+        <div class="cart-input">
+          <div class="container-childModifier__title">
+              <input type="checkbox" id="time-now" name="time-now" class="time-now-input checkbox-theme" style="width: auto;margin-left: 5px;"/>
+              <label class="" for="time-now">Ближайшее время</label>
+          </div>
+        </div>
+        <div class="cart-detail__subtitle">
+          Комментарий
+        </div>
+        <div class="cart-input">
+          <textarea name="comment" rows="4"></textarea>
+        </div>
+      {{else}}
+        <div class="cart-detail__subtitle">
+          Комментарий
+        </div>
+        <div class="cart-input">
+          <textarea name="comment" rows="4"></textarea>
+        </div>
+      {{/if}}
+    </div>
+  {{/unless}}
+  {{#if enablePayment }}
+    <div class="cart-delivery-block loght">
+      <div class="cart-delivery-block__item_payment active" data-value="1">Картой онлайн</div>
+      <div class="cart-delivery-block__item_payment" id="cart-delivery-block__item_payment-card" data-value="2">Картой при получении</div>
+      <div class="cart-delivery-block__item_payment" id="cart-delivery-block__item_payment-cash" data-value="3">Наличными при получении</div>
+    </div>
+  {{else}}
+    {{#if hidePayment}}
+      <div class="cart-delivery-block loght" style="display: none;">
+        <div class="cart-delivery-block__item_payment" data-value="1">Картой онлайн</div>
+        <div class="cart-delivery-block__item_payment active" id="cart-delivery-block__item_payment-card" data-value="2">Картой при получении</div>
+        <div class="cart-delivery-block__item_payment" id="cart-delivery-block__item_payment-cash" data-value="3">Наличными при получении</div>
+      </div>
+    {{else}}
+      <div class="cart-delivery-block loght" >
+        <div class="cart-delivery-block__item_payment" data-value="1" style="display: none;">Картой онлайн</div>
+        <div class="cart-delivery-block__item_payment active" id="cart-delivery-block__item_payment-card" data-value="2">Картой при получении</div>
+        <div class="cart-delivery-block__item_payment" id="cart-delivery-block__item_payment-cash" data-value="3">Наличными при получении</div>
+      </div>
+    {{/if}}
+  {{/if}}
+
+  {{#if wantOrder}}
+    <div class="cart-detail__order-description">
+      Для заказа продиктуйте официанту список блюд
+    </div>
+  {{/if}}
+
+  <div class="cart-detail__general loght">
+    {{#unless wantOrder}}
+      <div class="cart-detail__general-summ">
+        <div class="cart-detail__general-summ-title text-light">
+          Сумма заказа
+        </div>
+        <div class="cart-detail__general-summ-value">
+          <span id="cart-detail__general-summ-value" class="price-val" data-value="{{personSum}}">{{personSum}}</span> {{currentCurrency}}
+        </div>
+      </div>
+      {{#if isRemoteOrder}}
+      <div class="cart-detail__general-delivery">
+        <div class="cart-detail__general-delivery-title text-light">
+          Доставка
+        </div>
+        <div class="cart-detail__general-delivery-value">
+          <span id="cart-detail__general-delivery-value" class="price-val" data-value="{{delivery}}">{{delivery}}</span> {{currentCurrency}}
+        </div>
+      </div>
+      {{/if}}
+    {{/unless}}
+    <div class="cart-detail__general-final">
+      <div class="cart-detail__general-final-title text-light">
+        К оплате
+      </div>
+      <div class="cart-detail__general-final-value">
+        <span id="cart-detail__general-final-value" class="price-val" data-value="{{cartSum}}">{{cartSum}}</span> {{currentCurrency}}
+      </div>
+    </div>
+  </div>
+
+  {{#unless wantOrder}}
+    <div class="cart-button">
+      <a href="javascript:void(0);" class="btn main-color-button">Заказать</a>
+    </div>
+  {{/unless}}
+</div>
+
+
+<div id="paymentPublicID" data-paymentPublicID="{{paymentPublicID}}"></div>
+<div id="singleMessagePayment" data-singleMessagePayment="{{singleMessagePayment}}"></div>
+<div id="openTime" data-openTime="{{openTime}}"></div>
+<div id="closeTime" data-closeTime="{{closeTime}}"></div>
+{{#if isAuthenticated }}
+  <div id="personID" data-personID="{{authPerson._id}}"></div>
+{{else}}
+  <div id="personID" data-personID="0"></div>
+{{/if}}

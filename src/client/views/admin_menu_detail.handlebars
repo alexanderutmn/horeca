@@ -1,0 +1,576 @@
+<!-- row -->
+<div class="container-fluid">
+  <div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+      <div class="welcome-text">
+        <h4>{{item.title}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="default-tab">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home"
+                  >Блюдо</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#profile"
+                  >Модификаторы к блюду</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#contact"
+                  >Групповые модификаторы к блюду</a
+                >
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="home" role="tabpanel">
+                <div class="pt-4">
+                  <div class="basic-form">
+                    <form method="post" enctype="multipart/form-data">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Название</label>
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="title"
+                            value="{{item.title}}"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Цена</label>
+                        <div class="col-sm-9">
+                          <input
+                            type="number"
+                            class="form-control"
+                            name="price"
+                            value="{{item.price}}"
+                          />
+                        </div>
+                      </div>
+                      <fieldset class="form-group">
+                        <div class="row">
+                          <label class="col-form-label col-sm-3 pt-0"
+                            >Единица измерения</label
+                          >
+                          <div class="col-sm-9">
+                            <div class="form-group mb-0">
+                              <div class="radio">
+                                <label
+                                  ><input type="radio" name="unit" value="г"
+                                  data-text="Вес" {{#if gr}} checked {{/if}}>
+                                  г</label
+                                >
+                              </div>
+                              <div class="radio">
+                                <label
+                                  ><input type="radio" name="unit" value="мл"
+                                  data-text="Объем" {{#if ml}} checked {{/if}}>
+                                  мл</label
+                                >
+                              </div>
+                              <div class="radio disabled">
+                                <label
+                                  ><input type="radio" name="unit" value="шт"
+                                  data-text="Кол-во" {{#if sht}} checked
+                                  {{/if}}> шт</label
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" id="weight-text"
+                          >Вес</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="weight"
+                            required
+                            value="{{item.weight}}"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"
+                          >Изображение</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="hidden"
+                            name="img"
+                            value="{{item.img}}"
+                            id="product-img-old-field"
+                          />
+                          <div class="" id="product-img-load">
+                            <img
+                              src="{{item.img}}"
+                              alt=""
+                              id="product-img-avatar"
+                              class="mb-3"
+                              style="max-width: 160px"
+                            />
+                            <a
+                              href="javascript: void(0);"
+                              id="product-img-delete"
+                              style="
+                                margin-left: 10px;
+                                color: red;
+                                font-size: 16px;
+                              "
+                              ><i class="fa fa-close"></i
+                            ></a>
+                          </div>
+                          <div class="custom-file">
+                            <input
+                              type="file"
+                              accept="image/png, image/jpeg, image/webp"
+                              class="custom-file-input"
+                              name="new_img"
+                              id="product-img-field"
+                            />
+                            <label
+                              class="custom-file-label"
+                              id="product-img-label"
+                              >Выбрать изображение</label
+                            >
+                            <a
+                              href="javascript: void(0);"
+                              id="product-img-delete-clone"
+                              style="
+                                display: none;
+                                margin-left: 10px;
+                                color: red;
+                                font-size: 20px;
+                                position: absolute;
+                                right: 104px;
+                                z-index: 14;
+                                padding: 5px 10px;
+                                top: 0px;
+                                cursor: pointer;
+                              "
+                              ><i class="fa fa-close"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Категория</label>
+                        <div class="col-sm-9">
+                          <select
+                            class=""
+                            name="id_category"
+                            required
+                            id="product_id_category"
+                          >
+                            <option value="{{item.id_category._id}}">
+                              {{item.id_category.title}}
+                            </option>
+                            {{#each categories}}
+                            <option value="{{_id}}">{{title}}</option>
+                            {{/each}}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"
+                          >Сортировка</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="number"
+                            class="form-control"
+                            name="sort"
+                            value="{{item.sort}}"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Описание</label>
+                        <div class="col-sm-9">
+                          <textarea
+                            class="form-control"
+                            rows="4"
+                            name="description"
+                          >
+{{item.description}}</textarea
+                          >
+                        </div>
+                      </div>
+                      {{#if enableDishesQr}}
+                         <hr>
+                        <div class="form-group row">
+                           <label class="col-sm-3 col-form-label">Дополнительное описание <br> <i>Для разделения текста используйте: <br> &lt;br>&lt;br></i> </label>
+                           <div class="col-sm-9">
+                              <textarea class="form-control sink-text" rows="4" name="descriptionQr">{{item.descriptionQr}}</textarea>
+                           </div>
+                        </div>
+                        <div class="form-group row">
+                           <label class="col-sm-3 col-form-label">Фон дополнительного описания</label>
+                           <div class="col-sm-9">
+                             <input type="hidden" name="imgQr" value="{{item.imgQr}}" id="product-img-old-field-qr">
+                             {{#if item.imgQr}}
+                              <div class="" id="product-img-load-qr">
+                                <img src="{{item.imgQr}}" alt="" class="mb-3" style="max-width: 160px;">
+                                <a href="javascript: void(0);" id="product-img-delete-qr" style="margin-left: 10px;color: red; font-size: 16px;"><i class="fa fa-close"></i></a>
+                              </div>
+                             {{/if}}
+                              <div class="custom-file">
+                                 <input type="file" accept="image/png, image/jpeg, image/webp" class="custom-file-input" name="new_img-qr" id="product-img-field-qr">
+                                 <label class="custom-file-label" id="product-img-label-qr">Выбрать фон дополнительного описания</label>
+                                 <a href="javascript: void(0);" id="product-img-delete-clone-qr" style="display: none;margin-left: 10px;color: red;font-size: 20px;position: absolute;right: 104px;z-index: 14;padding: 5px 10px;top: 0px;cursor: pointer;"><i class="fa fa-close"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-3 col-form-label">
+                             <label class="">Цвет дополнительного описания</label><br>
+                             <a href="javascript:void(0);" class="text-primary set-default-color" data-color="#05202E" data-target="MAIN_TEXT_COLOR">Стандартное значение</a>
+                          </div>
+                          <div class="col-sm-6">
+                             <input type="color" style="max-width: 60px;" class="form-control qr-dish-color-text" value="{{item.colorQr}}" id="MAIN_TEXT_COLOR" name="colorQr">
+                          </div>
+                       </div>
+                       <div class="form-group row">
+                          <div class="col-sm-3 col-form-label">
+                             <label class="">Выбор шрифта дополнительного описания</label><br>
+                          </div>
+                          <div id="container"></div>
+                       </div>
+                       <div class="form-group row">
+                          <div id="sink" class="sink" style="color:{{item.colorQr}}">
+                             <p>Пример того, как будет выглядеть текст с этим выбранным шрифтом. </p>
+                             <p id="sink-text">{{item.descriptionQr}}</p>
+                             <p class="fontFamilyDish" style="display: none;">{{item.fontFamilyQr}}</p>
+                          </div>
+                       </div>
+                      {{/if}}
+                      <div class="form-group row">
+                        <div class="col-sm-10">
+                          <button type="submit" class="btn btn-primary">
+                            Сохранить
+                          </button>
+                          <button
+                            data-id="{{item._id}}"
+                            class="btn btn-primary remove-product"
+                          >
+                            Удалить
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    {{#if enableDishesQr}}
+                    <div class="row">
+                       <div class="col-12 col-sm-4">
+                       <a href="javascript:void(0);" data-url="{{url}}?openDish={{item._id}}" class="btn btn-primary mb-2 create-qr">Создать QR</a>
+                    </div>
+                     <div class="col-12 col-sm-4">
+                       <div class="row">
+                          <div class="col-12 col-sm-4">
+                             <div id="qrcode"></div>
+                          </div>
+                       </div>
+                    </div>
+                    </div>
+
+                     {{/if}}
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="profile">
+                <div class="pt-4">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"
+                      >Выбор модификатора для добавки в блюдо</label
+                    >
+                    <div class="col-sm-4">
+                      <select
+                        class=""
+                        name="id_modifier_for_menu"
+                        id="id_modifier_for_menu"
+                      >
+                        {{#each allModifiers}}
+                        <option value="{{_id}}">{{title}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <div
+                        class="btn btn-primary mb-2 add-modifier-for-menu"
+                        data-id="{{item._id}}"
+                      >
+                        Добавить в блюдо
+                      </div>
+                    </div>
+                  </div>
+                  <table
+                    id="menu-table-modifiers"
+                    class="display mb-4 dataTablesCard"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Группа</th>
+                        <th>Активность</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each modifiersArray}}
+                      <tr>
+                        <td data-id="{{_id}}" class="">
+                          <a href="/admin/modifiers/{{_id}}/">{{title}}</a>
+                        </td>
+                        <td data-id="{{_id}}" class="">{{price}} {{@root.setting.cuurentCurrency}}</td>
+                        <td data-id="{{_id}}" class="">
+                          {{id_category.title}}
+                        </td>
+                        <td data-id="{{_id}}" class="">
+                          {{#if active}} Да {{else}} Нет {{/if}}
+                        </td>
+                        <td>
+                          <div class="dropdown ml-auto text-right">
+                            <div class="btn-link" data-toggle="dropdown">
+                              <svg
+                                width="24px"
+                                height="24px"
+                                viewBox="0 0 24 24"
+                                version="1.1"
+                              >
+                                <g
+                                  stroke="none"
+                                  stroke-width="1"
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                >
+                                  <rect
+                                    x="0"
+                                    y="0"
+                                    width="24"
+                                    height="24"
+                                  ></rect>
+                                  <circle
+                                    fill="#000000"
+                                    cx="5"
+                                    cy="12"
+                                    r="2"
+                                  ></circle>
+                                  <circle
+                                    fill="#000000"
+                                    cx="12"
+                                    cy="12"
+                                    r="2"
+                                  ></circle>
+                                  <circle
+                                    fill="#000000"
+                                    cx="19"
+                                    cy="12"
+                                    r="2"
+                                  ></circle>
+                                </g>
+                              </svg>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              {{#if active}}
+                              <a
+                                class="dropdown-item deactive-modifiers"
+                                data-id="{{_id}}"
+                                href="javascript:void(0);"
+                                >Деактивировать модификатор</a
+                              >
+                              {{else}}
+                              <a
+                                class="dropdown-item active-modifiers"
+                                data-id="{{_id}}"
+                                href="javascript:void(0);"
+                                >Активировать модификатор</a
+                              >
+                              {{/if}}
+                              <a
+                                class="dropdown-item remove-modifier-from-menu"
+                                data-id="{{_id}}"
+                                href="javascript:void(0);"
+                                >Удалить из блюда</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="contact">
+                <div class="pt-4">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"
+                      >Выбор группового модификатора для добавки в блюдо</label
+                    >
+                    <div class="col-sm-4">
+                      <select title="Ничего не выбрано"
+                        class=""
+                        name="id_group_modifier_for_menu"
+                        id="id_group_modifier_for_menu"
+                      >
+                        {{#each allGroupModifiers}}
+                        <option value="{{_id}}">{{title}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <div
+                        class="btn btn-primary mb-2 add-group-modifier-for-menu"
+                        data-id="{{item._id}}"
+                      >
+                        Добавить в блюдо
+                      </div>
+                    </div>
+                  </div>
+                  <table
+                    id="menu-table-group-modifiers"
+                    class="display mb-4 dataTablesCard"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Название</th>
+
+                        <th>Родительская группа</th>
+                        <th>Активность</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each groupModifiersArray}}
+                      <tr>
+                        <td data-id="{{_id}}" class="">
+                          <a href="/admin/modifiers-categories/{{_id}}/"
+                            >{{title}}</a
+                          >
+                        </td>
+
+                        <td data-id="{{_id}}" class="">
+                          {{parent_id.title}}
+                        </td>
+                        <td data-id="{{_id}}" class="">
+                          {{#if active}} Да {{else}} Нет {{/if}}
+                        </td>
+                        <td>
+                          <div class="dropdown ml-auto text-right">
+                            <div class="btn-link" data-toggle="dropdown">
+                              <svg
+                                width="24px"
+                                height="24px"
+                                viewBox="0 0 24 24"
+                                version="1.1"
+                              >
+                                <g
+                                  stroke="none"
+                                  stroke-width="1"
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                >
+                                  <rect
+                                    x="0"
+                                    y="0"
+                                    width="24"
+                                    height="24"
+                                  ></rect>
+                                  <circle
+                                    fill="#000000"
+                                    cx="5"
+                                    cy="12"
+                                    r="2"
+                                  ></circle>
+                                  <circle
+                                    fill="#000000"
+                                    cx="12"
+                                    cy="12"
+                                    r="2"
+                                  ></circle>
+                                  <circle
+                                    fill="#000000"
+                                    cx="19"
+                                    cy="12"
+                                    r="2"
+                                  ></circle>
+                                </g>
+                              </svg>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              {{#if active}}
+                              <a
+                                class="dropdown-item deactive-group-modifiers"
+                                data-id="{{_id}}"
+                                href="javascript:void(0);"
+                                >Деактивировать групповой модификатор</a
+                              >
+                              {{else}}
+                              <a
+                                class="dropdown-item active-group-modifiers"
+                                data-id="{{_id}}"
+                                href="javascript:void(0);"
+                                >Активировать групповой модификатор</a
+                              >
+                              {{/if}}
+                              <a
+                                class="
+                                  dropdown-item
+                                  remove-group-modifier-from-menu
+                                "
+                                data-id="{{_id}}"
+                                href="javascript:void(0);"
+                                >Удалить групповой модификатор из блюда</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="img-container">
+          <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+        <button type="button" class="btn btn-primary" id="crop">Обрезать</button>
+        <button type="button" class="btn btn-primary" id="croploading" style="display: none;" disabled><div class="spinner-border spinner-border-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div></button>
+      </div>
+    </div>
+  </div>
+</div>

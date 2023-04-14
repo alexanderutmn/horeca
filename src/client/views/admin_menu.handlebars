@@ -1,0 +1,239 @@
+<!-- row -->
+<div class="container-fluid">
+  <div class="d-flex mb-3 align-items-center">
+    <div class="mr-auto d-none d-lg-block">
+      <h2 class="text-black font-w600 mb-0">Меню</h2>
+      <p class="mb-0">Ваш список блюд</p>
+    </div>
+    <div class="col-6 col-md-3">
+      <select
+        class="single-select-placeholder js-states product-category"
+        placeholder="Выбрать категорию"
+        id="product-menu-category"
+      >
+        <option value="#">Все категории</option>
+        {{#each categories}}
+          <option value="{{_id}}">{{title}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-6 col-md-2">
+      <a href="/admin/menu/add/" class="btn btn-success btn-lg">Добавить</a>
+    </div>
+  </div>
+  {{#if grid}}
+    <div class="row">
+      <div class="toolbar">
+        <div
+          class="button-display-table flaticon-381-equal-1 main-color-button"
+        ></div>
+        <div
+          class="button-display-grid flaticon-381-pad main-color-button"
+        ></div>
+      </div>
+    </div>
+  {{/if}}
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive" id="gridMenu" data-grid={{grid}}>
+        {{#if grid}}
+          <table id="menu-table-grid" class="display mb-4 dataTablesCard" data-productMenuByCategory={{productMenuByCategory}}>
+            <thead></thead>
+            <tbody>
+              <div class="row">
+                {{#each items}}
+                  {{#if active}}
+                    <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="new-arrival-product">
+                              <div class="new-arrivals-img-contnent">
+                                <img
+                                  class="img-fluid lazy"
+                                  data-src="{{img}}"
+                                  src="/assets/images/no_photo.png"
+                                  alt={{title}}
+                                  style="object-fit:cover;"
+                                />
+                              </div>
+                            <h4
+                              class="new-arrival-content text-center mt-3 text-elipse card-title"
+                            >
+                              <a
+                                href="/admin/menu/{{_id}}/"
+                                data-id="{{_id}}"
+                              >{{title}}</a>
+                            </h4>
+                            <div class="new-arrival-content text-center mt-3">
+                              <span class="price" data-id="{{_id}}">{{price}}
+                                &#8381;</span>
+                            </div>
+                            <div
+                              class="new-arrival-content text-center mt-3 text-elipse"
+                            >
+                              <span
+                                data-id="{{_id}}"
+                              >{{id_category.title}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {{else}}
+                    <div
+                      class="col-xl-3 col-lg-6 col-md-4 col-sm-6 card_noactive"
+                    >
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="new-arrival-product">
+                              <div class="new-arrivals-img-contnent">
+                                <img
+                                  class="img-fluid lazy"
+                                  data-src="{{img}}"
+                                  src="/assets/images/no_photo.png"
+                                  alt=""
+                                  style="object-fit:cover;"
+                                />
+                              </div>
+                            <div
+                              class="new-arrival-content text-center mt-3 text-elipse"
+                            >
+                              <a
+                                href="/admin/menu/{{_id}}/"
+                                data-id="{{_id}}"
+                              >{{title}}</a>
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                              <span
+                                class="price"
+                                data-id="{{_id}}"
+                              >{{price}}</span>
+                            </div>
+                            <div
+                              class="new-arrival-content text-center mt-3 text-elipse"
+                            >
+                              <span
+                                data-id="{{_id}}"
+                              >{{id_category.title}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {{/if}}
+
+                {{/each}}
+              </div>
+            </tbody>
+          </table>
+        {{else}}
+          <table id="menu-table" class="display mb-4 dataTablesCard" data-lengthDataTableMenu={{lengthDataTableMenu}} data-productMenuByCategory={{productMenuByCategory}} data-order="[[ 4, &quot;asc&quot; ]]">
+            <thead>
+              <tr>
+                <th data-orderable="false">Изображение</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Категория</th>
+                <th>Активность</th>
+                <th data-orderable="false"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each items}}
+                <tr>
+                  <td>
+                    <img
+                      data-src="{{img}}"
+                      src="/assets/images/no_photo.png"
+                      alt={{title}}
+                      class="menu-image lazy"
+                    />
+                  </td>
+                  <td data-id="{{_id}}" class=""><a
+                      href="/admin/menu/{{_id}}/"
+                    >{{title}}</a></td>
+                  <td data-id="{{_id}}" class="">{{price}} {{@root.setting.currentCurrency}}</td>
+                  <td data-id="{{_id}}" class="">{{id_category.title}}</td>
+                  <td data-id="{{_id}}" class="">
+                    {{#if active}}
+                      Да
+                    {{else}}
+                      Нет
+                    {{/if}}
+                  </td>
+                  <td>
+                    <div class="dropdown ml-auto text-right">
+                      <div class="btn-link" data-toggle="dropdown">
+                        <svg
+                          width="24px"
+                          height="24px"
+                          viewBox="0 0 24 24"
+                          version="1.1"
+                        ><g
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                          ><rect
+                              x="0"
+                              y="0"
+                              width="24"
+                              height="24"
+                            ></rect><circle
+                              fill="#000000"
+                              cx="5"
+                              cy="12"
+                              r="2"
+                            ></circle><circle
+                              fill="#000000"
+                              cx="12"
+                              cy="12"
+                              r="2"
+                            ></circle><circle
+                              fill="#000000"
+                              cx="19"
+                              cy="12"
+                              r="2"
+                            ></circle></g></svg>
+                      </div>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        {{#if active}}
+                          <a
+                            class="dropdown-item deactive-product"
+                            data-id="{{_id}}"
+                            href="javascript:void(0);"
+                          >Деактивировать</a>
+                        {{else}}
+                          <a
+                            class="dropdown-item active-product"
+                            data-id="{{_id}}"
+                            href="javascript:void(0);"
+                          >Активировать</a>
+                        {{/if}}
+                        <a
+                          class="dropdown-item remove-product"
+                          data-id="{{_id}}"
+                          href="javascript:void(0);"
+                        >Удалить</a>
+                        <!-- <a
+                          class="dropdown-item"
+                          data-id="{{_id}}"
+                          href="javascript:void(0);"
+                        >Добавить модификатор</a>
+                        <a
+                          class="dropdown-item"
+                          data-id="{{_id}}"
+                          href="javascript:void(0);"
+                        >Добавить групповой модификатор</a> -->
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="person-sign">
+  {{#if errors}}
+    <div class="alert alert-danger" style="margin-top: 15px;">{{errors}}</div>
+  {{/if}}
+  <form class="" action="" method="post" id="person-sign-form">
+    <div class="theme-input-title">
+      Введите ваш номер телефона
+    </div>
+    <div class="person-sign__input">
+      <input type="text" name="username" required placeholder="+7(___) ___-____" class="theme-input" id="personPhone">
+    </div>
+    <div class="person-sign__code-input hidden" id="person-sign__code-input" style="display: none;">
+      <div class="theme-input-title">
+        Введите код подтверждения
+      </div>
+      <div class="person-sign__input">
+        <input type="text" name="password" required placeholder="Код" class="theme-input" id="personCode">
+      </div>
+    </div>
+    <div class="" style="margin: 10px 0;">
+      <a href="javascript:void(0);" class="btn main-color-button" id="send-code">Войти</a>
+    </div>
+  </form>
+</div>
